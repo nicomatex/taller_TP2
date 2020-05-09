@@ -6,6 +6,9 @@
 #include "inventory.h"
 #include "thread.h"
 
+/* Constantes */
+#define GATHER_TIME 50000
+
 /* Interfaz */
 class Gatherer: public Thread{
     private:

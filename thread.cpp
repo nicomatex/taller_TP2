@@ -3,9 +3,9 @@
 #include "thread.h"
 
 /*Implementacion de metodos*/
-Thread::Thread(){};
+Thread::Thread(){}
 
-Thread::~Thread(){};
+Thread::~Thread(){}
 
 void Thread::start(){
     thread = std::thread(&Thread::run, this);
