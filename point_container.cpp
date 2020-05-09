@@ -1,14 +1,12 @@
 #include "point_container.h"
 
-PointContainer::PointContainer():points(0){}
+PointContainer::PointContainer() : points(0) {}
 
-PointContainer::~PointContainer(){}
+PointContainer::~PointContainer() {}
 
-void PointContainer::add_points(unsigned int amount){
-    std::unique_lock<std::mutex> lk(m);
-    points += amount;
+void PointContainer::add_points(unsigned int amount) {
+  std::unique_lock<std::mutex> lk(m);
+  points += amount;
 }
 
-unsigned int PointContainer::get_points(){
-    return points;
-}
+unsigned int PointContainer::get_points() { return points; }

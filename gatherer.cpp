@@ -1,23 +1,24 @@
 /* Includes */
 #include "gatherer.h"
+
 #include <unistd.h>
-#include "resource.h"
+
 #include "inventory.h"
+#include "resource.h"
 
 /* Implementacion */
-Gatherer::Gatherer(BlockingQueue<int> &resource_queue, Inventory &inventory):
-    resource_queue(resource_queue), resource(RESOURCE_EMPTY), inventory(inventory){}
+Gatherer::Gatherer(BlockingQueue<int> &resource_queue, Inventory &inventory)
+    : resource_queue(resource_queue), inventory(inventory) {}
 
-void Gatherer::run(){
-    resource = resource_queue.pop();
-    while(resource != RESOURCE_EMPTY){
-        usleep(GATHER_TIME);
-        try{
-            inventory.deposit(resource);
-        }catch(InventoryClosedException &e){
-            std::cerr << e.what() << std::endl;
-            break;
-        }
-        resource = resource_queue.pop();
+void Gatherer::run() {
+  Resource resource;
+  while ((resource = resource_queue.pop()) != RESOURCE_EMPTY) {
+    usleep(GATHER_TIME);
+    try {
+      inventory.deposit(resource);
+    } catch (InventoryClosedException &e) {
+      std::cerr << e.what() << std::endl;
+      break;
     }
+  }
 }

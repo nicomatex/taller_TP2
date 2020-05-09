@@ -10,14 +10,14 @@
 #define GATHER_TIME 50000
 
 /* Interfaz */
-class Gatherer: public Thread{
-    private:
-        BlockingQueue<int> &resource_queue;
-        int resource;
-        Inventory &inventory;
-    public:
-        Gatherer(BlockingQueue<int> &resource_queue, Inventory &inventory);
-        virtual void run() override;
+class Gatherer : public Thread {
+ private:
+  BlockingQueue<int> &resource_queue;
+  Inventory &inventory;
+
+ public:
+  Gatherer(BlockingQueue<int> &resource_queue, Inventory &inventory);
+  virtual void run() override;
 };
 
 #endif
