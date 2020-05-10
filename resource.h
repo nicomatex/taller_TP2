@@ -3,7 +3,10 @@
 #define __RESOURCE_H
 #include <string>
 
+#include "blocking_queue.h"
+
 typedef int Resource;
+typedef BlockingQueue<Resource> ResourceQueue;
 
 std::string res_name(Resource res);
 

@@ -1,16 +1,17 @@
 #include "map_parser.h"
+#include "config.h"
 
 #include <exception>
 #include <fstream>
 #include <unordered_map>
+#include <string>
 
-char const *MapFileException::what() {
-  return "Hubo un error con el archivo de mapa.\n";
-}
 
-MapParser::MapParser(BlockingQueue<Resource> &farmer_queue,
-                     BlockingQueue<Resource> &lumberjack_queue,
-                     BlockingQueue<Resource> &miner_queue,
+char const *MapFileException::what() { return ERR_MAPFILE; }
+
+MapParser::MapParser(ResourceQueue &farmer_queue,
+                     ResourceQueue &lumberjack_queue,
+                     ResourceQueue &miner_queue, 
                      const std::string map_filename)
     : farmer_queue(farmer_queue),
       lumberjack_queue(lumberjack_queue),

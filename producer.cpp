@@ -2,9 +2,9 @@
 #include "producer.h"
 
 #include <unistd.h>
-
 #include <iostream>
 #include <unordered_map>
+#include <utility>
 
 /* Implementacion */
 Producer::Producer(
@@ -12,7 +12,7 @@ Producer::Producer(
     std::initializer_list<std::pair<const Resource, unsigned int>> request,
     unsigned int benefit_generation, PointContainer &point_container)
     : inventory(inventory),
-      request(std::unordered_map<Resource, unsigned int>()),
+      request(Request()),
       benefit_generation(benefit_generation),
       point_container(point_container) {
   this->request.insert(request);

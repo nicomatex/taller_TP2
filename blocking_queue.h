@@ -21,8 +21,9 @@ class BlockingQueue {
 
  public:
   /*Constructor y destructor*/
-  BlockingQueue(T empty_return) : isClosed(false), empty_return(empty_return) {}
-  ~BlockingQueue(){};
+  explicit BlockingQueue(T empty_return)
+      : isClosed(false), empty_return(empty_return) {}
+  ~BlockingQueue() {}
 
   T pop() {
     std::unique_lock<std::mutex> lk(m);

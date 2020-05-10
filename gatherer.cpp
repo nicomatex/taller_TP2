@@ -7,7 +7,7 @@
 #include "resource.h"
 
 /* Implementacion */
-Gatherer::Gatherer(BlockingQueue<int> &resource_queue, Inventory &inventory)
+Gatherer::Gatherer(ResourceQueue &resource_queue, Inventory &inventory)
     : resource_queue(resource_queue), inventory(inventory) {}
 
 void Gatherer::run() {
@@ -16,7 +16,7 @@ void Gatherer::run() {
     usleep(GATHER_TIME);
     try {
       inventory.deposit(resource);
-    } catch (InventoryClosedException &e) {
+    } catch(InventoryClosedException &e) {
       std::cerr << e.what() << std::endl;
       break;
     }

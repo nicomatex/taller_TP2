@@ -13,14 +13,16 @@ struct InventoryClosedException : std::exception {
   char const *what();
 };
 
+/* Tipos */
+typedef std::unordered_map<Resource, unsigned int> Request;
+
 /* Interfaz */
 class Inventory {
  private:
   std::unordered_map<Resource, unsigned int> content;
   std::mutex m;
   std::condition_variable cv;
-  bool enough_resources(
-      const std::unordered_map<Resource, unsigned int> &request);
+  bool enough_resources(const Request &request);
   bool isClosed;
 
  public:
@@ -40,8 +42,7 @@ class Inventory {
   y false en caso de que no hubiera los suficientes
   recursos disponibles, y sea seguro que tampoco los vaya a
   haber. */
-  bool take_resources(
-      const std::unordered_map<Resource, unsigned int> &request);
+  bool take_resources(const Request &request);
 
   void close();
 };

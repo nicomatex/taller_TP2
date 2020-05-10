@@ -3,10 +3,20 @@
 #include "config.h"
 #include "engine.h"
 
-int main(void) {
-  Engine engine("map.txt");
-  engine.spawn_gatherers(2, 3, 1);
-  engine.spawn_producers(1, 3, 1);
+#define ARG_QTY 3
+
+#define ARG_POS_MAP 2
+#define ARG_POS_WORKERS 1
+
+int main(int argc, char *argv[]) {
+  if (argc != ARG_QTY) {
+    std::cerr << ERR_PARAM_QTY << std::endl;
+    return -1;
+  }
+
+  Engine engine(argv[ARG_POS_MAP], argv[ARG_POS_WORKERS]);
+
+  engine.spawn_workers();
 
   engine.spawn_resources();
   engine.join_gatherers();

@@ -12,11 +12,11 @@
 /* Interfaz */
 class Gatherer : public Thread {
  private:
-  BlockingQueue<int> &resource_queue;
+  ResourceQueue &resource_queue;
   Inventory &inventory;
 
  public:
-  Gatherer(BlockingQueue<int> &resource_queue, Inventory &inventory);
+  Gatherer(ResourceQueue &resource_queue, Inventory &inventory);
   virtual void run() override;
 };
 

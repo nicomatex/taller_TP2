@@ -3,6 +3,7 @@
 
 /* Includes */
 #include <unordered_map>
+#include <utility>
 
 #include "inventory.h"
 #include "point_container.h"
@@ -11,11 +12,12 @@
 /* Constantes */
 #define PRODUCE_TIME 60000
 
+
 /* Interfaz */
 class Producer : public Thread {
  private:
   Inventory &inventory;
-  std::unordered_map<Resource, unsigned int> request;
+  Request request;
   unsigned int puntos_generados;  // debug
   unsigned int benefit_generation;
   PointContainer &point_container;

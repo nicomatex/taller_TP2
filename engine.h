@@ -1,6 +1,8 @@
 /* Includes */
+#include <string>
 #include <vector>
 
+#include "cfg_parser.h"
 #include "gatherer.h"
 #include "inventory.h"
 #include "map_parser.h"
@@ -11,28 +13,32 @@
 
 class Engine {
  private:
-  BlockingQueue<Resource> lumberjack_queue;
-  BlockingQueue<Resource> miner_queue;
-  BlockingQueue<Resource> farmer_queue;
+  ResourceQueue lumberjack_queue;
+  ResourceQueue miner_queue;
+  ResourceQueue farmer_queue;
 
   Inventory inventory;
   MapParser map_parser;
+  ConfigParser config_parser;
 
-  std::vector<Gatherer*> gatherers;
-  std::vector<Producer*> producers;
+  std::vector<Gatherer *> gatherers;
+  std::vector<Producer *> producers;
 
   PointContainer point_container;
 
  public:
   /* El constructor recibe una cadena hacia el archivo de mapa.*/
-  Engine(const std::string map_file);
+  Engine(const std::string map_file, const std::string config_file);
   ~Engine();
 
   /* "Spawnea" y pone a trabajar a los recolectores. */
-  void spawn_gatherers(int farmers, int miners, int lumberjacks);
+  void spawn_gatherers(WorkerList &worker_list);
 
   /* "Spawnea" y pone a trabajar a los productores. */
-  void spawn_producers(int cooks, int carpenters, int smiths);
+  void spawn_producers(WorkerList &worker_list);
+
+  /* "Spawnea" a todos los trabajadores: Recolectores y productores.*/
+  void spawn_workers();
 
   /* Parsea el archivo de mapa y pone los recursos
   a disponibilidad de los recolectores.*/

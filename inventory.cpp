@@ -1,13 +1,12 @@
 #include "inventory.h"
 
 #include <iostream>
+#include <utility>
 
 #include "config.h"
 #include "resource.h"
 
-char const* InventoryClosedException::what() {
-  return "Se intento agregar un recurso con el inventario cerrado.\n";
-}
+char const* InventoryClosedException::what() { return ERR_CLOSED; }
 
 /* Inicializacion del inventario, con todos los recursos en cantidad 0.*/
 Inventory::Inventory()
@@ -26,23 +25,22 @@ void Inventory::deposit(Resource resource) {
 }
 
 void Inventory::print_content() {
-  std::cout << "  - " << NM_WHEAT << " : " << std::to_string(content[WHEAT])
+  std::cout << "  - " << NM_WHEAT << ": " << std::to_string(content[WHEAT])
             << std::endl;
 
-  std::cout << "  - " << NM_WOOD << " : " << std::to_string(content[WOOD])
+  std::cout << "  - " << NM_WOOD << ": " << std::to_string(content[WOOD])
             << std::endl;
 
-  std::cout << "  - " << NM_COAL << " : " << std::to_string(content[COAL])
+  std::cout << "  - " << NM_COAL << ": " << std::to_string(content[COAL])
             << std::endl;
 
-  std::cout << "  - " << NM_IRON << " : " << std::to_string(content[IRON])
+  std::cout << "  - " << NM_IRON << ": " << std::to_string(content[IRON])
             << std::endl;
 }
 
 Inventory::~Inventory() {}
 
-bool Inventory::enough_resources(
-    const std::unordered_map<Resource, unsigned int>& request) {
+bool Inventory::enough_resources(const Request& request) {
   /* Se itera sobre todos los recursos de la solicitud */
   for (std::pair<Resource, unsigned int> element : request) {
     /* Si el contenido del inventario no es suficiente
@@ -55,8 +53,7 @@ bool Inventory::enough_resources(
   return true;
 }
 
-bool Inventory::take_resources(
-    const std::unordered_map<Resource, unsigned int>& request) {
+bool Inventory::take_resources(const Request& request) {
   std::unique_lock<std::mutex> lk(m);
 
   while (!enough_resources(request)) {
