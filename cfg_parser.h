@@ -7,7 +7,7 @@
 
 /* Excepciones */
 struct WorkerFileException : std::exception {
-  char const *what();
+    char const *what();
 };
 
 /* Tipos */
@@ -15,18 +15,18 @@ typedef std::unordered_map<std::string, int> WorkerList;
 
 /* Interfaz */
 class ConfigParser {
- private:
-  const std::string worker_filename;
+   private:
+    const std::string worker_filename;
 
- public:
-  /* Recibe la ruta al archivo que contiene
-  las cantidades de cada trabajador.*/
-  explicit ConfigParser(const std::string worker_filename);
-  ~ConfigParser();
+   public:
+    /* Recibe la ruta al archivo que contiene
+    las cantidades de cada trabajador.*/
+    explicit ConfigParser(const std::string worker_filename);
+    ~ConfigParser();
 
-  /* Devuelve una WorkerList de la forma
-  {tipo_de_trabajador:cantidad} */
-  WorkerList get_worker_list();
+    /* Devuelve una WorkerList de la forma
+    {tipo_de_trabajador:cantidad} */
+    WorkerList get_worker_list();
 };
 
 #endif

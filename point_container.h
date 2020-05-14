@@ -7,19 +7,19 @@
 /* Interfaz */
 
 class PointContainer {
- private:
-  std::mutex m;
-  unsigned int points;
+   private:
+    std::mutex m;
+    unsigned int points;
 
- public:
-  PointContainer();
-  ~PointContainer();
+   public:
+    PointContainer();
+    ~PointContainer();
 
-  /* Agrega puntos al contenedor de puntos*/
-  void add_points(unsigned int amount);
+    /* Agrega puntos al contenedor de puntos*/
+    void add_points(unsigned int amount);
 
-  /* Devuelve la cantidad de puntos acumulada*/
-  unsigned int get_points();
+    /* Devuelve la cantidad de puntos acumulada*/
+    unsigned int get_points();
 };
 
 #endif
