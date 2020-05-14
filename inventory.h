@@ -8,18 +8,22 @@
 
 #include "resource.h"
 
+#define INITIAL_INVENTORY_CONTENT                                 \
+    {                                                             \
+        {ID_WHEAT, 0}, {ID_WOOD, 0}, {ID_IRON, 0}, { ID_COAL, 0 } \
+    }
 /* Excepciones */
 struct InventoryClosedException : std::exception {
     char const *what();
 };
 
 /* Tipos */
-typedef std::unordered_map<Resource, unsigned int> Recipe;
+typedef std::unordered_map<resource_id, unsigned int> Recipe;
 
 /* Interfaz */
 class Inventory {
    private:
-    std::unordered_map<Resource, unsigned int> content;
+    std::unordered_map<resource_id, unsigned int> content;
     std::mutex m;
     std::condition_variable cv;
     bool enough_resources(const Recipe &recipe);
