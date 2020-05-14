@@ -16,7 +16,7 @@ void Gatherer::run() {
         usleep(GATHER_TIME);
         try {
             inventory << resource;
-        } catch (InventoryClosedException &e) {
+        } catch(InventoryClosedException &e){
             std::cerr << e.what() << std::endl;
             break;
         }

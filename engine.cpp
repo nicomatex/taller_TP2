@@ -56,7 +56,7 @@ void Engine::spawn_workers() {
     WorkerList worker_list;
     try {
         worker_list = config_parser.get_worker_list();
-    } catch (WorkerFileException &e) {
+    } catch(WorkerFileException &e){
         std::cerr << e.what() << std::endl;
         return;
     }
@@ -68,7 +68,7 @@ void Engine::spawn_workers() {
 void Engine::spawn_resources() {
     try {
         map_parser.parse_and_fill_queues();
-    } catch (MapFileException &e) {
+    } catch(MapFileException &e){
         std::cerr << e.what() << std::endl;
     }
 }
