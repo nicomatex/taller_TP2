@@ -6,7 +6,16 @@
 #include <unordered_map>
 
 #include "blocking_queue.h"
+#include "config.h"
 #include "resource.h"
+
+/* Asociacion de cada caracter al id del recurso que representa. */
+#define IDS_BY_CHAR                                                           \
+    {                                                                         \
+        {CHAR_WHEAT, ID_WHEAT}, {CHAR_WOOD, ID_WOOD}, {CHAR_COAL, ID_COAL}, { \
+            CHAR_IRON, ID_IRON                                                \
+        }                                                                     \
+    }
 
 /* Excepciones */
 struct MapFileException : std::exception {
@@ -16,19 +25,20 @@ struct MapFileException : std::exception {
 /* Interfaz */
 class MapParser {
    private:
-    ResourceQueue &farmer_queue;
-    ResourceQueue &lumberjack_queue;
-    ResourceQueue &miner_queue;
+    ResourceQueue *farmer_queue;
+    ResourceQueue *lumberjack_queue;
+    ResourceQueue *miner_queue;
     const std::string map_filename;
-    std::unordered_map<char, Resource> char_to_resource;
+    std::unordered_map<char, resource_id> char_to_id;
+    std::unordered_map<resource_id, ResourceQueue *> queue_by_id;
     void done();
 
    public:
     /*Recibe por parametro referencias a las colas
     correspondientes a cada tipo de recolector y la
     ruta del archivo que se debe parsear.*/
-    MapParser(ResourceQueue &farmer_queue, ResourceQueue &lumberjack_queue,
-              ResourceQueue &miner_queue, const std::string map_filename);
+    MapParser(ResourceQueue *farmer_queue, ResourceQueue *lumberjack_queue,
+              ResourceQueue *miner_queue, const std::string map_filename);
 
     ~MapParser();
     /*Parsea el archivo y envia los recursos

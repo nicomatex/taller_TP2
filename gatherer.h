@@ -12,11 +12,11 @@
 /* Interfaz */
 class Gatherer : public Thread {
    private:
-    ResourceQueue &resource_queue;
-    Inventory &inventory;
+    ResourceQueue *resource_queue;
+    Inventory *inventory;
 
    public:
-    Gatherer(ResourceQueue &resource_queue, Inventory &inventory);
+    Gatherer(ResourceQueue *resource_queue, Inventory *inventory);
     virtual void run() override;
 };
 

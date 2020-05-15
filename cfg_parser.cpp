@@ -1,10 +1,9 @@
-#include "cfg_parser.h"
-
 #include <fstream>
 #include <sstream>
 #include <string>
 
 #include "config.h"
+#include "cfg_parser.h"
 
 char const *WorkerFileException::what() { return ERR_WORKERFILE; }
 
