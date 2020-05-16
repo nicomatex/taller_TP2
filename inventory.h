@@ -18,16 +18,16 @@ struct InventoryClosedException : std::exception {
 };
 
 /* Tipos */
-typedef std::unordered_map<resource_id, unsigned int> Recipe;
+typedef std::unordered_map<ResourceId, unsigned int> Recipe;
 
 /* Interfaz */
 class Inventory {
    private:
-    std::unordered_map<resource_id, unsigned int> content;
+    std::unordered_map<ResourceId, unsigned int> content;
     std::mutex m;
     std::condition_variable cv;
     bool enough_resources(const Recipe &recipe);
-    bool isClosed;
+    bool is_closed;
 
    public:
     /* Constructor y destructor */
@@ -50,6 +50,10 @@ class Inventory {
     bool take_resources(const Recipe &recipe);
 
     void close();
+
+    /* No se permite la construccion por copia ni movimiento. */
+    Inventory(const Inventory &other) = delete;
+    Inventory(Inventory &&other) = delete;
 };
 
 #endif

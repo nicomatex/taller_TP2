@@ -29,8 +29,8 @@ class MapParser {
     ResourceQueue *lumberjack_queue;
     ResourceQueue *miner_queue;
     const std::string map_filename;
-    std::unordered_map<char, resource_id> char_to_id;
-    std::unordered_map<resource_id, ResourceQueue *> queue_by_id;
+    std::unordered_map<char, ResourceId> char_to_id;
+    std::unordered_map<ResourceId, ResourceQueue *> queue_by_id;
     void done();
 
    public:
@@ -45,6 +45,10 @@ class MapParser {
     correspondientes a cada cola segun el tipo
     de recurso.*/
     void parse_and_fill_queues();
+
+    /* No se permite la construccion por copia ni por movimiento. */
+    MapParser(const MapParser& other) = delete;
+    MapParser(MapParser&& other) = delete;
 };
 
 #endif

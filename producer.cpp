@@ -7,7 +7,7 @@
 /* Implementacion */
 Producer::Producer(
     Inventory *inventory,
-    std::initializer_list<std::pair<const resource_id, unsigned int>> recipe,
+    std::initializer_list<std::pair<const ResourceId, unsigned int>> recipe,
     unsigned int benefit_generation, PointContainer *point_container)
     : inventory(inventory),
       recipe(recipe),

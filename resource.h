@@ -7,7 +7,7 @@
 #include "config.h"
 
 /* Tipo de dato del id. */
-typedef int resource_id;
+typedef int ResourceId;
 /* Asociacion de cada ID a su nombre. */
 #define NAMES_BY_ID                                                   \
     {                                                                 \
@@ -19,12 +19,12 @@ typedef int resource_id;
 
 class Resource {
    private:
-    resource_id id;
-    static std::unordered_map<resource_id, std::string> resource_names;
+    ResourceId id;
+    static std::unordered_map<ResourceId, std::string> resource_names;
 
    public:
     /* Constructor por id */
-    explicit Resource(resource_id id);
+    explicit Resource(ResourceId id);
 
     /* Constructor por copia */
     Resource(const Resource& other);
@@ -33,13 +33,13 @@ class Resource {
     Resource(Resource&& other);
 
     /* Devuelve el nombre del recurso con el id indicado. Metodo estatico*/
-    static std::string get_name_by_id(const resource_id id);
+    static std::string get_name_by_id(const ResourceId id);
 
     /* Devuelve el nombre del recurso. */
     std::string get_name();
 
     /* Devuelve el id del recurso. */
-    resource_id get_id();
+    ResourceId get_id();
 
     /* El = es como el constructor por copia. */
     Resource operator=(const Resource& other);

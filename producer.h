@@ -21,10 +21,10 @@ class Producer : public Thread {
     PointContainer *point_container;
 
    public:
-    Producer(Inventory *inventory,
-             std::initializer_list<std::pair<const resource_id, unsigned int>>
-                 recipe,
-             unsigned int benefit_generation, PointContainer *point_container);
+    Producer(
+        Inventory *inventory,
+        std::initializer_list<std::pair<const ResourceId, unsigned int>> recipe,
+        unsigned int benefit_generation, PointContainer *point_container);
     virtual void run() override;
 };
 

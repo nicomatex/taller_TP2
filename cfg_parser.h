@@ -7,7 +7,7 @@
 
 /* Excepciones */
 struct WorkerFileException : std::exception {
-    char const *what();
+    char const* what();
 };
 
 /* Tipos */
@@ -27,6 +27,10 @@ class ConfigParser {
     /* Devuelve una WorkerList de la forma
     {tipo_de_trabajador:cantidad} */
     WorkerList get_worker_list();
+
+    /* No se permite construccion por copia ni por movimiento. */
+    ConfigParser(const ConfigParser& other) = delete;
+    ConfigParser(ConfigParser&& other) = delete;
 };
 
 #endif

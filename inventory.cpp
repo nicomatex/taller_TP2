@@ -8,12 +8,12 @@
 char const* InventoryClosedException::what() { return ERR_CLOSED; }
 
 /* Inicializacion del inventario, con todos los recursos en cantidad 0.*/
-Inventory::Inventory() : content(INITIAL_INVENTORY_CONTENT), isClosed(false) {}
+Inventory::Inventory() : content(INITIAL_INVENTORY_CONTENT), is_closed(false) {}
 
 /* Incrementa la cantidad del recurso indicado por parametro en 1.*/
 void Inventory::deposit(Resource& resource) {
     std::unique_lock<std::mutex> lk(m);
-    if (isClosed) {
+    if (is_closed) {
         throw InventoryClosedException();
     }
     this->content[resource.get_id()] += 1;
@@ -40,7 +40,7 @@ Inventory::~Inventory() {}
 
 bool Inventory::enough_resources(const Recipe& recipe) {
     /* Se itera sobre todos los recursos de la solicitud */
-    for (std::pair<resource_id, unsigned int> element : recipe) {
+    for (std::pair<ResourceId, unsigned int> element : recipe) {
         /* Si el contenido del inventario no es suficiente
         para alguno de los recursos, entonces no hay
         suficiente. */
@@ -55,13 +55,13 @@ bool Inventory::take_resources(const Recipe& recipe) {
     std::unique_lock<std::mutex> lk(m);
 
     while (!enough_resources(recipe)) {
-        if (isClosed) {
+        if (is_closed) {
             return false;
         }
         cv.wait(lk);
     }
 
-    for (std::pair<resource_id, unsigned int> element : recipe) {
+    for (std::pair<ResourceId, unsigned int> element : recipe) {
         this->content[element.first] -= element.second;
     }
 
@@ -70,6 +70,6 @@ bool Inventory::take_resources(const Recipe& recipe) {
 
 void Inventory::close() {
     std::unique_lock<std::mutex> lk(m);
-    isClosed = true;
+    is_closed = true;
     cv.notify_all();
 }

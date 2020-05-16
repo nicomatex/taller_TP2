@@ -20,6 +20,10 @@ class PointContainer {
 
     /* Devuelve la cantidad de puntos acumulada*/
     unsigned int get_points();
-};
+
+    /* No se permite la construccion por copia ni por movimiento*/
+    PointContainer(const PointContainer& other) = delete;
+    PointContainer(PointContainer&& other) = delete;
+}; 
 
 #endif

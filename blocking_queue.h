@@ -11,7 +11,7 @@
 template <class T>
 class BlockingQueue {
    private:
-    bool isClosed;
+    bool is_closed;
     std::mutex m;
     std::queue<T> queue;
     std::condition_variable cv;
@@ -22,14 +22,14 @@ class BlockingQueue {
    public:
     /*Constructor y destructor*/
     explicit BlockingQueue(T empty_return)
-        : isClosed(false), empty_return(empty_return) {}
+        : is_closed(false), empty_return(empty_return) {}
     ~BlockingQueue() {}
 
     T pop() {
         std::unique_lock<std::mutex> lk(m);
 
         while (queue.empty()) {  // Para prevenir spurious wakeups
-            if (isClosed) {
+            if (is_closed) {
                 // Devuelve el objeto especial empty_return
                 return empty_return;
             }
@@ -49,7 +49,7 @@ class BlockingQueue {
 
     void close() {
         std::unique_lock<std::mutex> lk(m);
-        isClosed = true;
+        is_closed = true;
         cv.notify_all();
     }
 };

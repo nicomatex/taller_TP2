@@ -65,4 +65,8 @@ class Engine {
     /* Imprime por stdout un mensaje que indica la cantidad de
     puntos de beneficio acumulados. */
     void print_benefit_points();
+
+    /* No se permite construccion por copia ni por movimiento.*/
+    Engine(const Engine &other) = delete;
+    Engine(Engine &&other) = delete;
 };

@@ -27,7 +27,7 @@
 #define ID_IRON 3
 #define ID_COAL 4
 
-/* Asociacion de cada char del archivo mapa 
+/* Asociacion de cada char del archivo mapa
 al id que representa */
 #define CHAR_WHEAT 'T'
 #define CHAR_IRON 'H'
@@ -42,9 +42,18 @@ al id que representa */
 #define ERR_INVALID_CHAR "Caracter invalido."
 
 /* Recetas */
-#define RECIPE_SMITH {{ID_COAL, 2}, {ID_IRON, 2}}
-#define RECIPE_COOK {{ID_WHEAT, 2}, {ID_COAL, 1}}
-#define RECIPE_CARPENTER {{ID_WOOD, 3}, {ID_IRON, 1}}
+#define RECIPE_SMITH                 \
+    {                                \
+        {ID_COAL, 2}, { ID_IRON, 2 } \
+    }
+#define RECIPE_COOK                   \
+    {                                 \
+        {ID_WHEAT, 2}, { ID_COAL, 1 } \
+    }
+#define RECIPE_CARPENTER             \
+    {                                \
+        {ID_WOOD, 3}, { ID_IRON, 1 } \
+    }
 
 /* Puntos de beneficio generados */
 #define PTS_SMITH 3
