@@ -1,4 +1,4 @@
-#include "PointContainer.h"
+#include "point_container.h"
 
 PointContainer::PointContainer() : points(0) {}
 

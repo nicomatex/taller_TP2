@@ -3,7 +3,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "BlockingQueue.h"
+#include "blocking_queue.h"
 #include "config.h"
 
 /* Tipo de dato del id. */

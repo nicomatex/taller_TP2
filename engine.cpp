@@ -1,8 +1,8 @@
 #include <string>
 
-#include "Engine.h"
+#include "engine.h"
 #include "config.h"
-#include "Resource.h"
+#include "resource.h"
 
 Engine::Engine(const std::string map_file, const std::string config_file)
     : lumberjack_queue(Resource(ID_EMPTY)),

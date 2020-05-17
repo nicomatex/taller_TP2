@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-#include "MapParser.h"
+#include "map_parser.h"
 
 char const *MapFileException::what() { return ERR_MAPFILE; }
 

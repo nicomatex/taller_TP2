@@ -5,9 +5,9 @@
 #include <string>
 #include <unordered_map>
 
-#include "BlockingQueue.h"
+#include "blocking_queue.h"
 #include "config.h"
-#include "Resource.h"
+#include "resource.h"
 
 /* Asociacion de cada caracter al id del recurso que representa. */
 #define IDS_BY_CHAR                                                           \

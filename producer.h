@@ -5,9 +5,9 @@
 #include <unordered_map>
 #include <utility>
 
-#include "Inventory.h"
-#include "PointContainer.h"
-#include "Thread.h"
+#include "inventory.h"
+#include "point_container.h"
+#include "thread.h"
 
 /* Constantes */
 #define PRODUCE_TIME 60000

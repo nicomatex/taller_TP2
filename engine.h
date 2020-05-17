@@ -2,12 +2,12 @@
 #include <string>
 #include <vector>
 
-#include "ConfigParser.h"
-#include "Gatherer.h"
-#include "Inventory.h"
-#include "MapParser.h"
-#include "PointContainer.h"
-#include "Producer.h"
+#include "cfg_parser.h"
+#include "gatherer.h"
+#include "inventory.h"
+#include "map_parser.h"
+#include "point_container.h"
+#include "producer.h"
 
 /* Interfaz */
 

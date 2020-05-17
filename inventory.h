@@ -6,7 +6,7 @@
 #include <mutex>
 #include <unordered_map>
 
-#include "Resource.h"
+#include "resource.h"
 
 #define INITIAL_INVENTORY_CONTENT                                 \
     {                                                             \

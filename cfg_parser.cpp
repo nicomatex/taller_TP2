@@ -3,7 +3,7 @@
 #include <string>
 
 #include "config.h"
-#include "ConfigParser.h"
+#include "cfg_parser.h"
 
 char const *WorkerFileException::what() { return ERR_WORKERFILE; }
 

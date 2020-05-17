@@ -2,9 +2,9 @@
 #define __GATHERER_H
 
 /* Includes */
-#include "BlockingQueue.h"
-#include "Inventory.h"
-#include "Thread.h"
+#include "blocking_queue.h"
+#include "inventory.h"
+#include "thread.h"
 
 /* Constantes */
 #define GATHER_TIME 50000
