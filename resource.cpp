@@ -1,5 +1,5 @@
 #include "resource.h"
-
+#include <utility>
 #include <string>
 
 std::unordered_map<int, std::string> Resource::resource_names(NAMES_BY_ID);

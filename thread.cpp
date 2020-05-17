@@ -1,6 +1,6 @@
 /* Includes */
 #include "thread.h"
-
+#include <utility>
 #include <thread>
 
 /*Implementacion de metodos*/
