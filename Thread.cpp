@@ -1,5 +1,5 @@
 /* Includes */
-#include "thread.h"
+#include "Thread.h"
 
 #include <thread>
 

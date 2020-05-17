@@ -1,10 +1,10 @@
 /* Includes */
 #include <unistd.h>
 
-#include "gatherer.h"
+#include "Gatherer.h"
 #include "config.h"
-#include "inventory.h"
-#include "resource.h"
+#include "Inventory.h"
+#include "Resource.h"
 
 /* Implementacion */
 Gatherer::Gatherer(ResourceQueue *resource_queue, Inventory *inventory)

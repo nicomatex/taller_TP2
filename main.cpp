@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "config.h"
-#include "engine.h"
+#include "Engine.h"
 
 #define ARG_QTY 3
 

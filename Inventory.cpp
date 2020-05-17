@@ -2,8 +2,8 @@
 #include <utility>
 
 #include "config.h"
-#include "resource.h"
-#include "inventory.h"
+#include "Resource.h"
+#include "Inventory.h"
 
 char const* InventoryClosedException::what() { return ERR_CLOSED; }
 
